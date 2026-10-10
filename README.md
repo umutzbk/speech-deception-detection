@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.png" alt="Detecting deception from speech"></p>
+
 # Detecting Deception from Speech
 
 Can acoustic features alone tell a true story from a made-up one? An end-to-end audio
@@ -8,6 +10,8 @@ recordings of narrated stories in several languages, each labelled true or decep
 **Notebook:** [`speech_deception_detection.ipynb`](speech_deception_detection.ipynb)
 
 ## Pipeline
+
+<p align="center"><img src="assets/pipeline.png" alt="Pipeline: recordings, split first, segment, features, compare, select, tune, test once" width="100%"></p>
 
 1. **Split first:** stratified 60 / 20 / 20 train / validation / test split at the recording level,
    with an explicit overlap check. An early version scored a suspicious 100% AUC, which turned out
@@ -28,6 +32,10 @@ recordings of narrated stories in several languages, each labelled true or decep
 | Random Forest, validation (untuned) | 0.55 | 0.51 | 0.49 |
 | Tuned Random Forest, validation | **0.72** | 0.70 | 0.63 |
 | Tuned Random Forest, **test** | 0.44 | 0.51 | 0.55 |
+
+<p align="center"><img src="assets/auc-by-stage.png" alt="Validation AUC of five models near chance, tuned Random Forest 0.72 on validation and 0.44 on test" width="90%"></p>
+
+<p align="center"><img src="assets/confusion-val-test.png" alt="Confusion matrices: validation accuracy 70%, test accuracy 51%" width="90%"></p>
 
 The honest conclusion is that the tuned model does **not** generalise: the validation gain comes
 from tuning on a very small validation set and disappears on the test set. With about 100
